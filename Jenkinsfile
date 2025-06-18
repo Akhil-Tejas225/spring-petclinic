@@ -43,8 +43,8 @@ pipeline {
     success{
         mail subject : ${BUILD_ID} - main branch -success,
               body : ${BUILD_ID}
-              from : akhilit225@gmail.com
-              to : samplebuild@akhil.io
+              from : 'akhilit225@gmail.com'
+              to : 'samplebuild@akhil.io'
     }
    }
  }
