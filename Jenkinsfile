@@ -44,7 +44,7 @@ pipeline {
   post {
        success {
            mail subject : "${env.BUILD_ID} - main branch -success",
-                body : "${env.BUILD_ID} is sucessfull"
+                body : "${env.BUILD_ID} is sucessfull",
                 from : 'akhilit225@gmail.com',
                 to : 'samplebuild@akhil.io'
     }
