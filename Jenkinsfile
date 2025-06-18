@@ -20,8 +20,8 @@ pipeline {
     }
     stage('Build'){
         agent{
-            node{
-                label: 'java'
+            node {
+                label 'java'
             }
         }
         tools{
