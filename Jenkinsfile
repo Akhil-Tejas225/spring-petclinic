@@ -39,13 +39,14 @@ pipeline {
             sh "mvn ${params.CHOICES}"
         }
    }
-   post {
-    success{
-        mail subject : '${BUILD_ID} - main branch -success,'
+   
+ }
+ post {
+       success {
+           mail subject : '${BUILD_ID} - main branch -success,'
               body : '${BUILD_ID} is sucessfull,'
               from : 'akhilit225@gmail.com',
               to : 'samplebuild@akhil.io',
     }
    }
- }
  }
