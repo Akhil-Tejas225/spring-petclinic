@@ -19,12 +19,12 @@ pipeline {
         }  
     }
     stage('Build'){
-        agent{
+        agent {
             node {
                 label 'java'
             }
         }
-        tools{
+        tools {
             maven 'M2_HOME'
         }
         when {
