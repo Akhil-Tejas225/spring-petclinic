@@ -44,9 +44,15 @@ pipeline {
   post {
        success {
            mail subject : '${BUILD_ID} - main branch -success',
-              body : "${BUILD_ID} is sucessfull",
+              body : "${BUILD_ID} is sucessfull"
               from : 'akhilit225@gmail.com',
               to : 'samplebuild@akhil.io'
     }
+       failure {
+          mail subject : '${BUILD_ID} - main branch -failed',
+               body : "${BUILD_ID} is failed",
+               from : 'akhilit225@gmail.com',
+               to : 'samplebuild@akhil.io'
+       }
    }
  }
