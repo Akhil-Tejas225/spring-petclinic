@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Build'){
         when {
-        // beforeAgent=true
+        beforeAgent=true
         // beforeOptions=true
             expression {
                 params.CHOICES =='package' || params.CHOICES == 'build'
