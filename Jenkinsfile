@@ -4,7 +4,7 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES') 
     }
   trigger{
-    pollSCM(* * * * *)
+    pollSCM('* * * * *')
   }
   parameters{
     choice(name: 'CHOICES', choices:['package', 'test', 'clean package', 'build'], description: 'Maven Build Lifecycle')
