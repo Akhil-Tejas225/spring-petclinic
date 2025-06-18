@@ -27,7 +27,7 @@ pipeline {
             beforeAgent=true
             beforeOptions=true
             expression {
-                ${params.CHOICES}=package || ${params.choices}=build
+                ${params.CHOICES}='package' || ${params.choices}='build'
             }
         }
         steps{
