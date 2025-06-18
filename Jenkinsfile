@@ -36,11 +36,7 @@ pipeline {
         }
   
         steps{
-            script{
-                def projpath = sh(script: "find . -name pom.xml", returnStdout:true).trim()
-                artifactoryMavenBuild pom: "$projpath", goals: 'package'
-            
-            }
+            sh "mvn ${params.CHOICES}"
         }
 
 
