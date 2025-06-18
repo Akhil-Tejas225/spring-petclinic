@@ -38,7 +38,7 @@ pipeline {
         steps{
             script{
                 def projpath = sh(script: "find . -name pom.xml", returnStdout:true).trim()
-                artifactoryMavenBuild pom: $projpath, goals: pacakge
+                artifactoryMavenBuild pom: "$projpath", goals: 'pacakge'
             
             }
         }
