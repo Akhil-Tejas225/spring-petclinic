@@ -4,17 +4,19 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES') 
     }
   triggers{
-    steps{
+
         pollSCM('* * * * *')
-    }
+
   }
   parameters{
     choice(name: 'CHOICES', choices:['package', 'test', 'clean package', 'build'], description: 'Maven Build Lifecycle')
   }
  stages{
     stage('git'){
+        steps{
         git url: 'https://github.com/Akhil-Tejas225/spring-petclinic.git',
         branch: 'main'
+        }  
     }
     stage('Build'){
         agent{
