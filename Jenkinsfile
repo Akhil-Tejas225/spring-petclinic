@@ -31,12 +31,12 @@ pipeline {
             beforeAgent=true
             beforeOptions=true
             expression {
-                params.CHOICES =='package' || params.choices == 'build'
+                params.CHOICES =='package' || params.CHOICES == 'build'
             }
         }
         steps{
             script{
-                def projpath = sh(script: "find .-name pom.xm", returnStdoutput:true).trim()
+                def projpath = sh(script: "find . -name pom.xm", returnStdout:true).trim()
                 artifactoryMavenBuild pom: $projpath, goals: pacakge
             
             }
