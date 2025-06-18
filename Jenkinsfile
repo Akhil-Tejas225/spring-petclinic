@@ -12,11 +12,11 @@ pipeline {
     choice(name: 'CHOICES', choices:['package', 'test', 'clean package', 'build'], description: 'Maven Build Lifecycle')
   }
  stages{
-    stage(git){
+    stage('git'){
         git url: 'https://github.com/Akhil-Tejas225/spring-petclinic.git',
         branch: 'main'
     }
-    stage(Build){
+    stage('Build'){
         agent{
             node{
                 label: 'java'
