@@ -19,6 +19,13 @@ pipeline {
         }  
     }
     stage('Build'){
+        when {
+            beforeAgent=true
+            beforeOptions=true
+            expression {
+                params.CHOICES =='package' || params.CHOICES == 'build'
+            }
+        }
         agent {
             node {
                 label 'java'
@@ -27,13 +34,7 @@ pipeline {
         tools {
             maven 'M2_HOME'
         }
-        when {
-            beforeAgent=true
-            beforeOptions=true
-            expression {
-                params.CHOICES =='package' || params.CHOICES == 'build'
-            }
-        }
+  
         steps{
             script{
                 def projpath = sh(script: "find . -name pom.xm", returnStdout:true).trim()
