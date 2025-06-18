@@ -34,7 +34,7 @@ pipeline {
             script{
                 def projpath = sh(script: "find .-name pom.xm", returnStdoutput:true).trim()
                 artifactoryMavenBuild pom: $projpath, goals: pacakge
-            )
+            
             }
         }
 
