@@ -41,7 +41,7 @@ pipeline {
    }
    
  }
- post {
+  post {
        success {
            mail subject : '${BUILD_ID} - main branch -success',
               body : '${BUILD_ID} is sucessfull',
