@@ -27,7 +27,7 @@ pipeline {
         tools{
             maven 'M2_HOME'
         }
-        when{
+        when {
             beforeAgent=true
             beforeOptions=true
             expression {
