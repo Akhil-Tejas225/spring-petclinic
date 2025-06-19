@@ -1,58 +1,42 @@
 pipeline {
- agent any
-  options {
-        timeout(time: 30, unit: 'MINUTES') 
+    agent any
+    options {
+        timeout(time: 1, unit: 'HOURS') 
     }
-  triggers{
-
-        pollSCM('* * * * *')
-
-  }
-  parameters{
-    choice(name: 'CHOICES', choices:['package', 'test', 'clean package', 'build'], description: 'Maven Build Lifecycle')
-  }
- stages{
-    stage('git'){
-        steps{
-        git url: 'https://github.com/Akhil-Tejas225/spring-petclinic.git',
-        branch: 'main'
-        }  
+    triggers {
+        pollSCM('H */4 * * 1-5')
     }
-    stage('Build'){
-        when {
-        beforeAgent true
-        beforeOptions true
-            expression {
-                params.CHOICES =='package' || params.CHOICES == 'build'
+    parameters {
+          choice(name: 'GOALS', choices: ['clean Package', 'package', 'build','test'], description: 'Maven Goals')
+    }
+    stages {
+        stage('git') {
+             steps {
+                git url: 'https://github.com/Akhil-Tejas225/spring-petclinic.git',
+                    branch: 'main'
+             }
+        }
+        stage(build_with_sonar) {
+            when {
+                beforeAgent true
+                beforeOptions true
+                expression {
+                    params.GOALS == 'clean package' || params.GOALS == 'package'
+                }
             }
-        }
-        agent {
-            node {
-                label 'java'
+            tools {
+                maven 'M2_HOME'
             }
-        }
-        tools {
-            maven 'M2_HOME'
-        }
-  
-        steps{
-            sh "mvn ${params.CHOICE}"
-        }
-   }
-   
- }
-  post {
-       success {
-           mail subject : "${env.BUILD_ID} - main branch -success",
-                body : "${env.BUILD_ID} is sucessfull",
-                from : 'akhilit225@gmail.com',
-                to : 'samplebuild@akhil.io'
+            agent {
+                node {
+                    label 'java'
+                }
+            }
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+            }
+
     }
-       failure {
-          mail subject : "${env.BUILD_ID} - main branch -failed",
-               body : "${env.BUILD_ID} is failed",
-               from : 'akhilit225@gmail.com',
-               to : 'samplebuild@akhil.io'
-       }
-   }
- }
+    }  
+}
