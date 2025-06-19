@@ -33,7 +33,7 @@ pipeline {
                 }
             }
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv('SONAR_QUBE') {
                 sh 'mvn ${params.GOALS} org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.token=701811083fc0264e739307ac7ba6f6c668c16521'
             }
 
