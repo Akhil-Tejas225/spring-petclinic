@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SONAR_QUBE') {
-                sh "mvn ${params.GOALS} org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D -Dsonar.organization=spring-petclinic225
+                sh "mvn ${params.GOALS} org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D -Dsonar.organization=spring-petclinic225"
 "
             }
 
