@@ -61,7 +61,7 @@ pipeline {
            mail from: "akhilit225", 
                 to: "tejas@mahadevelectricals.com", 
                 subject: "Build ${BUILD_ID} is failure", 
-                body: "congrats! ${BUILD_ID} is failure"
+                body: " ${BUILD_ID} is failure"
                 }
                 
             }    
