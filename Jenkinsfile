@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SONAR_QUBE') {
-                sh "mvn ${params.GOALS} org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D sonar.organization=spring-petclinic225 -D sonar.projectKey=701811083fc0264e739307ac7ba6f6c668c16521"
+                sh "mvn ${params.GOALS} org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=spring-petclinic225 -Dsonar.projectKey=701811083fc0264e739307ac7ba6f6c668c16521"
                 junit testResults: '**/surefire-reports/TEST-*.xml'
                 archiveArtifacts artifacts: '**/spring-petclinic*.*jar'
                        
@@ -66,3 +66,7 @@ pipeline {
                 
             }    
 }
+
+
+//This build will fail as we need to configure http://<jenkins-host>/sonarqube-webhook/ in Sonar qube administration webhooks which is available only in paid version
+// we should make sure sonar scanner is installed
