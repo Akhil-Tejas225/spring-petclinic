@@ -38,8 +38,9 @@ pipeline {
                 junit testResults: '**/surefire-reports/TEST-*.xml'
                 archiveArtifacts artifacts: '**/spring-petclinic*.*jar'
                        
-            }
-            post {
+            }        
+    }
+           post {
                 success {
                      mail from: "akhilit225", 
                           to: "tejas@mahadevelectricals.com", 
@@ -53,9 +54,8 @@ pipeline {
                           body: "congrats! ${BUILD_ID} is failure"
 
                 }
+                
             }
-
-    }
     }  
 }
 }
