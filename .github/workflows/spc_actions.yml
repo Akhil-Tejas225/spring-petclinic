@@ -8,4 +8,7 @@ jobs:
       steps: 
          - name: git clone
            uses: actions/checkout@v4
+         - name: mvn clean
+           run: mvn clean package
+           
             
