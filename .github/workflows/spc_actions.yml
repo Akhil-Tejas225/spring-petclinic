@@ -12,11 +12,11 @@ jobs:
            run: mvn clean package
     Job-2:
         name: spc_test1
-        needs: Job-1
+        # needs: Job-1
         runs-on: ubuntu-latest
         steps:
           - name: install_dotnet
-            run: apt install dotnet-sdk-9.0
+            run: apt update && apt install dotnet-sdk-9.0
 
            
             
