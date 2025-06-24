@@ -16,7 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: install_dotnet
-            run: apt update && apt install dotnet-sdk-9.0
+            run: sudo apt update && sudo apt install dotnet-sdk-9.0
 
            
             
