@@ -1,0 +1,11 @@
+name: spc_git
+run-name: ${{ github.actor }}
+on: [ push , workflow_dispatch ]
+jobs:
+    Job-1:
+      name: spc_test
+      runs-on: ubuntu-latest
+      steps: 
+         - name: git clone
+           uses: actions/checkout@v4
+            
