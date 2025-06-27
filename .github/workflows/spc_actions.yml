@@ -23,4 +23,116 @@ jobs:
             run: sudo apt update && sudo apt install dotnet-sdk-8.0 -y
 
            
-            
+    # There 3 types aspects on "on" state:
+    # pipelines will triggered based on events and actions
+    # we can add filters to the events
+#     🧨 1. Trigger Events (the on: block)
+# These are the events that can start your workflow:
+
+# 🔹 Common Ones:
+# Event	                 Description
+# push	                 Trigger on every push to specified branches/tags
+# pull_request	         Trigger on PR events (open, sync, reopen, etc.)
+# workflow_dispatch	     Manual trigger via GitHub UI
+# schedule	             Cron-based trigger (like a cronjob)
+# release	               Trigger on GitHub Release actions
+# issues	               Trigger on issue events
+# issue_comment          Trigger on comment on issues or PRs
+# fork	                 Trigger when a repo is forked
+# watch	                 Trigger when repo is starred
+# deployment	           Trigger on deployments
+# repository_dispatch	Custom event via API
+
+# ⚙️ 2. Trigger Activities (sub-events / types)
+# Each trigger has activities (also called event types). For example:
+
+# 🧪 For pull_request:
+
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize, closed]
+# Type	                 What it does
+# opened	               When PR is created
+# reopened	             When PR is reopened
+# synchronize            New commit pushed to PR
+# closed	               When PR is closed
+# assigned	             When PR is assigned to someone
+
+# 🧪 For issues:
+
+# on:
+#   issues:
+#     types: [opened, labeled, assigned]
+# Type	                  Meaning
+# opened	                New issue created
+# labeled	                A label was added
+# assigned	              An issue was assigned to someone
+
+# 🧪 For release:
+
+# on:
+#   release:
+#     types: [published, created, prereleased]
+# Type	                  Description
+# published	              When a release is published
+# created	                When a release is created (before publish)
+# prereleased	            When a prerelease is created
+
+# 🧹 3. Filters (branch, paths, tags, etc.)
+# 🔸 Branch filters:
+
+# on:
+#   push:
+#     branches:
+#       - main
+#       - 'release/*'
+# 🔸 Ignore branches:
+# on:
+#   push:
+#     branches-ignore:
+#       - 'docs/*'
+# 🔸 Tag filters:
+
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+# 🔸 Path filters:
+
+# on:
+#   push:
+#     paths:
+#       - 'src/**'
+#       - '!docs/**'   # exclude paths
+# ⚡ Special Triggers
+# 🧑‍💻 Manual trigger from UI:
+
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: 'Deploy to environment'
+#         required: true
+#         default: 'staging'
+# ⏰ Scheduled Trigger:
+
+# on:
+#   schedule:
+#     - cron: '0 0 * * *' # every midnight UTC
+# Use crontab.guru to test these.
+
+# 🧠 Pro Tip
+# You can combine multiple events:
+
+
+# 
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+#   workflow_dispatch:
+# And GitHub will treat it like a logical OR – if any of the events occur, the workflow runs.
+
+
+              
