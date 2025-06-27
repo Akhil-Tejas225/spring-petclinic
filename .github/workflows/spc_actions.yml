@@ -1,6 +1,10 @@
 name: spc_git
 run-name: ${{ github.actor }}
-on: [ push , workflow_dispatch ]
+on: 
+  pull_request:
+    branches:
+      - main
+
 jobs:
     Job-1:
       name: spc_test
