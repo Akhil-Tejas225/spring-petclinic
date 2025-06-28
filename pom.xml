@@ -15,10 +15,10 @@
 
   <name>petclinic</name>
   <distributionManagement>
-  <repository>
-    <id>at225-maven-remote</id> <!-- 👈 This can be ANYTHING, but match settings.xml -->
-    <url>https://trialm9czxi.jfrog.io/artifactory/at225-maven-remote</url>
-  </repository>
+  <snapshotRepository>
+    <id>test</id> <!-- 👈 This can be ANYTHING, but match settings.xml -->
+    <url>https://trialm9czxi.jfrog.io/artifactory/at227-libs-snapshot</url>
+  </snapshotRepository>
 </distributionManagement>
 
   <properties>
