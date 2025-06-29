@@ -10,7 +10,7 @@ jobs:
          - name: git clone
            uses: actions/checkout@v4
          - name: run test
-           run: mvn test
+           run: mvn clean package
     job-2:
       name: build
       needs: Job-1
