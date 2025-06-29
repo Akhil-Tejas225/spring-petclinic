@@ -1,6 +1,10 @@
 name: spc_git
 run-name: ${{ github.actor }}
-on: [push,workflow_dispatch]
+on:
+  workflow_dispatch: {}
+  push:
+    paths-ignore:
+      - Jenkinsfile
 
 jobs:
     Job-1:
