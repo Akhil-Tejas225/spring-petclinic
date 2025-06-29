@@ -7,7 +7,7 @@ pipeline {
         pollSCM('H */4 * * 1-5')
     }
     parameters {
-          choice(name: 'GOALS', choices: ['clean package', 'package', 'build','test'], description: 'Maven Goals')
+          choice(name: 'GOALS', choices: ['clean deploy', 'package', 'build','test'], description: 'Maven Goals')
     }
     stages {
         stage('git') {
