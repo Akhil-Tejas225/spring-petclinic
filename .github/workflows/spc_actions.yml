@@ -1,26 +1,31 @@
 name: spc_git
 run-name: ${{ github.actor }}
-on: 
-  pull_request:
-    branches:
-      - main
+on: [push,workflow_dispatch]
 
 jobs:
     Job-1:
-      name: spc_test
+      name: clone and test
       runs-on: ubuntu-latest
       steps: 
          - name: git clone
            uses: actions/checkout@v4
-         - name: mvn clean
-           run: mvn clean package
-    Job-2:
-        name: spc_test1
-        # needs: Job-1
-        runs-on: ubuntu-latest
-        steps:
-          - name: install_dotnet
-            run: sudo apt update && sudo apt install dotnet-sdk-8.0 -y
+         - name: run test
+           run: mvn test
+    job-2:
+      name: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: build
+          run: mvn clean package
+
+    # Job-2:
+    #     name: spc_test1
+    #     # needs: Job-1
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #       - name: install_dotnet
+    #         run: sudo apt update && sudo apt install dotnet-sdk-8.0 -y
+
 
            
     # There 3 types aspects on "on" state:
