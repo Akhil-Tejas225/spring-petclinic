@@ -13,6 +13,7 @@ jobs:
            run: mvn test
     job-2:
       name: build
+      needs: Job-1
       runs-on: ubuntu-latest
       steps:
         - name: build
