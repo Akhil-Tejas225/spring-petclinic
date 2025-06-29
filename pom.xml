@@ -14,6 +14,12 @@
   <version>3.4.0-SNAPSHOT</version>
 
   <name>petclinic</name>
+  <distributionManagement>
+  <snapshotRepository>
+    <id>test</id> <!-- 👈 This can be ANYTHING, but match settings.xml -->
+    <url>https://trialm9czxi.jfrog.io/artifactory/at227-libs-snapshot</url>
+  </snapshotRepository>
+</distributionManagement>
 
   <properties>
 
