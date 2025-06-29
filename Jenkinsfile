@@ -21,7 +21,7 @@ pipeline {
                 beforeAgent true
                 beforeOptions true
                 expression {
-                    params.GOALS == 'clean package' || params.GOALS == 'package'
+                    params.GOALS == 'clean deploy' || params.GOALS == 'package'
                 }
             }
             tools {
