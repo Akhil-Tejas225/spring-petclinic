@@ -22,6 +22,7 @@ jobs:
           
     job-2:
       name: package
+      needs: Job-1
       runs-on: ubuntu-latest
       outputs:
         output1: ${{ steps.md_file.outputs.md_name}}      
