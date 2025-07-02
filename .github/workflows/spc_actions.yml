@@ -24,12 +24,14 @@ jobs:
            uses: actions/upload-artifact@v4
            with: 
               name: upload artifacts
-              path: artifacts/
-         - name: upload Test results
-           uses: actions/upload-artifact@v4
-           with:
-              name: upload-Testresults
-              path: testreports/
+              path: |
+                 artifacts/
+                 testreports/
+        #  - name: upload Test results
+        #    uses: actions/upload-artifact@v4
+        #    with:
+        #       name: upload-Testresults
+        #       path: testreports/
         
     # job-2:
     #   name: build
