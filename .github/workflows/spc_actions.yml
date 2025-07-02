@@ -27,6 +27,21 @@ jobs:
               path: |
                  artifacts/
                  testreports/
+    Job-2:
+        name: download artifacts
+        needs: Job-1
+        runs-on: ubuntu-latest
+        steps:
+            - name: download-artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: download test
+                path: |
+                  artifacts/
+                  testreports/
+            - name: list files
+              run: ls
+
         #  - name: upload Test results
         #    uses: actions/upload-artifact@v4
         #    with:
