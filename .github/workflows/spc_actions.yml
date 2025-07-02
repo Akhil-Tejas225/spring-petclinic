@@ -7,7 +7,7 @@ on:
       - Jenkinsfile
 defaults:
   run:
-    working-directory: spring-petclinic
+    working-directory: .
 
 jobs:
     Job-1:
