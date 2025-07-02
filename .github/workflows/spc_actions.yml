@@ -10,6 +10,8 @@ jobs:
     Job-1:
       name: clone and test
       runs-on: ubuntu-latest
+      outputs:
+        output1: ${{ steps.md_file.outputs.md_name}}
       steps: 
          - name: git clone
            uses: actions/checkout@v4
@@ -20,6 +22,10 @@ jobs:
              mkdir -p artifacts && mkdir testreports
              find . -type f -name spring-petclinic*.jar -exec cp {} artifacts/ \;
              find . -type f -name TEST-*.xml -exec cp {} testreports/ \;
+         - name: get md file
+           run: find . -type f  -name *.md -exec echo "md_name={}" >> $GITHUB_OUTPUT
+           id: md_file
+
          - name: uploading build atrifacts
            uses: actions/upload-artifact@v4
            with: 
