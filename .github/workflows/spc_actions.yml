@@ -5,12 +5,14 @@ on:
   push:
     paths-ignore:
       - Jenkinsfile
+defaults:
+  run:
+    working-directory: spring-petclinic
 
 jobs:
     Job-1:
       name: clone and test
       runs-on: ubuntu-latest
-
       steps: 
          - name: git clone
            uses: actions/checkout@v4
