@@ -23,7 +23,7 @@ jobs:
              find . -type f -name spring-petclinic*.jar -exec cp {} artifacts/ \;
              find . -type f -name TEST-*.xml -exec cp {} testreports/ \;
          - name: get md file
-           run: find . -type f  -name *.md -exec echo "md_name={}" >> $GITHUB_OUTPUT ;
+           run: find . -type f  -name "*.md" -exec echo "md_name={}" \; >> $GITHUB_OUTPUT 
            id: md_file
 
          - name: uploading build atrifacts
@@ -47,6 +47,8 @@ jobs:
                   testreports/
             - name: list files
               run: ls
+            - name: get_output
+              run: echo "${{ needs.job-1.outputs.output1 }}"
 
         #  - name: upload Test results
         #    uses: actions/upload-artifact@v4
