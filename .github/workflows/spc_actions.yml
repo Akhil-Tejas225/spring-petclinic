@@ -23,7 +23,7 @@ jobs:
          - name: uploading build atrifacts
            uses: actions/upload-artifact@v4
            with: 
-              name: upload artifacts
+              name: dist artifacts
               path: |
                  artifacts/
                  testreports/
@@ -35,7 +35,7 @@ jobs:
             - name: download-artifacts
               uses: actions/download-artifact@v4
               with:
-                name: download test
+                name: dist artifacts
                 path: |
                   artifacts/
                   testreports/
