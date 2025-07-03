@@ -7,7 +7,7 @@ pipeline {
         pollSCM('H */4 * * 1-5')
     }
     parameters {
-          choice(name: 'GOALS', choices: ['clean deploy', 'package', 'build','test', 'deploy'], description: 'Maven Goals')
+          choice(name: 'GOALS', choices: ['clean package', 'package', 'build','test', 'deploy'], description: 'Maven Goals')
     }
     stages {
         stage('git') {
@@ -21,7 +21,7 @@ pipeline {
                 beforeAgent true
                 beforeOptions true
                 expression {
-                     params.GOALS == 'clean deploy' || params.GOALS == 'deploy'
+                     params.GOALS == 'clean package' || params.GOALS == 'build'
                 }
             }
             tools {
@@ -69,7 +69,7 @@ pipeline {
                 rtMavenrun (
                     tools: 'M2_HOME',
                     pom: 'pom.xml',
-                    goals: "mvn ${params.GOALS}",
+                    goals: "mvn clean deploy",
                     deployerId: 'MAVEN_DEPLOYER'
                 )
             }
