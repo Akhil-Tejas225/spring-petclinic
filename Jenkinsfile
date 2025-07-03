@@ -51,14 +51,15 @@ pipeline {
         }
         stage('Deploytojfrog') {
             steps {
-            sh '''
                dir('spring-petclinic') {
+                sh '''
                echo "Installing JFrog CLI temporarily..."
                curl -fL https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/latest/jfrog-cli-linux-amd64/jf -o jf
                chmod +x ./jf
                sh ./jf rt mvn clean deploy
-              
-              '''  
+               '''
+              }
+                
             }
         }
     }  
