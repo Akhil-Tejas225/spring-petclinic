@@ -53,7 +53,7 @@ pipeline {
                 rtServer(
                     id: 'ARTIFACTORY_SERVER',
                     serverId: 'JFROG',
-                    credentialId: 'jfrog',
+                    credentialsId: 'jfrog',
                 )
                 rtMavenDeployer(
                     id: 'MAVEN_DEPLOYER',
@@ -67,7 +67,7 @@ pipeline {
         stage('Maven_build'){
             steps{
                 rtMavenRun (
-                    tools: 'M2_HOME',
+                    tool: 'M2_HOME',
                     pom: 'pom.xml',
                     goals: "mvn clean deploy",
                     deployerId: 'MAVEN_DEPLOYER'
