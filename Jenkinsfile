@@ -53,8 +53,9 @@ pipeline {
             steps {
                dir('spring-petclinic') {
                 sh '''
+               JFROG=/usr/local/bin
                echo "deploying to jfrog.."
-                jf rt mvn clean deploy
+                ${JFROG}jf rt mvn clean deploy
                '''
               }
                 
