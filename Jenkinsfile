@@ -26,6 +26,7 @@ pipeline {
             }
             tools {
                 maven 'M2_HOME'
+
             }
             agent {
                 node {
@@ -51,7 +52,10 @@ pipeline {
         stage('Deploytojfrog') {
             steps {
                dir('spring-petclinic') {
-                sh 'jf rt mvn clean deploy'
+                script{
+                    def jfrogpath = tools 'jfrogcli'
+                    sh "${jfrogpath}/rt mvn clean deploy"
+                }
             }
         }
     }  
