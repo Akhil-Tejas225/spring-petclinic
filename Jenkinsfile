@@ -50,8 +50,8 @@ pipeline {
         }
         stage('Deploytojfrog') {
             steps {
-               dir(spring-petclinic) {
-                sh 'jf rt mvn clean install'
+               dir('spring-petclinic') {
+                sh 'jf rt mvn clean deploy'
             }
         }
     }  
