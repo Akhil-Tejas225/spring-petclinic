@@ -55,6 +55,8 @@ pipeline {
             }
         }
     }  
+                
+}
     post {
        success {
           mail from: "akhilit225", 
@@ -67,9 +69,7 @@ pipeline {
                 to: "tejas@mahadevelectricals.com", 
                 subject: "Build ${BUILD_ID} is failure", 
                 body: " ${BUILD_ID} is failure"
-                }
-                
-}    
+                }    
 }
 }
 
