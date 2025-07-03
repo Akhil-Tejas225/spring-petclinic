@@ -52,12 +52,12 @@ pipeline {
             steps {
                 rtServer(
                     id: 'ARTIFACTORY_SERVER',
-                    serverid: 'JFROG',
-                    credential: 'jfrog',
+                    serverId: 'JFROG',
+                    credentialId: 'jfrog',
                 )
                 rtMavenDeployer(
                     id: 'MAVEN_DEPLOYER',
-                    serverid: 'ARTIFACTORY_SERVER',
+                    serverId: 'ARTIFACTORY_SERVER',
                     releaseRepo: 'at227-libs-release',
                     snapshotRepo: 'at227-libs-snapshot'
 
