@@ -53,7 +53,7 @@ pipeline {
             steps {
                dir('spring-petclinic') {
                 script{
-                    def jfrogpath = tools 'jfrogcli'
+                    def jfrogpath = tool 'jfrogcli'
                     sh "${jfrogpath}/rt mvn clean deploy"
                 }
             }
