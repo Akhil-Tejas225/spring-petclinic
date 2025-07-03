@@ -71,7 +71,7 @@ pipeline {
                 
             }    
 }
-
+}
 
 //This build will fail as we need to configure http://<jenkins-host>/sonarqube-webhook/ in Sonar qube administration webhooks which is available only in paid version
 // we should make sure sonar scanner is installed
