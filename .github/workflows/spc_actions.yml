@@ -20,11 +20,14 @@ jobs:
              mkdir -p artifacts && mkdir testreports
              find . -type f -name spring-petclinic*.jar -exec cp {} artifacts/ \;
              find . -type f -name TEST-*.xml -exec cp {} testreports/ \;
+             
          - name: uploading build atrifacts
            uses: actions/upload-artifact@v4
            with: 
               name: upload artifacts
-              path: artifacts/
+              path: |
+                 artifacts/
+                 testreports/
          - name: upload Test results
            uses: actions/upload-artifact@v4
            with:

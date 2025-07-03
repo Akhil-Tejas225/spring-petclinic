@@ -48,6 +48,32 @@ pipeline {
                 }  
             }
         }
+        stage('artifcatory configuration'){
+            steps {
+                rtserver(
+                    id: 'ARTIFACTORY_SERVER',
+                    serverid: 'JFROG',
+                    credential: 'jfrog',
+                )
+                rtMavendeployer(
+                    id: 'MAVEN_DEPLOYER',
+                    serverid: 'ARTIFACTORY_SERVER',
+                    releaseRepo: 'at227-libs-release',
+                    snapshotRepo: 'at227-libs-snapshot'
+
+                )
+            }
+        }
+        stage('Maven_build'){
+            steps{
+                rtMavenrun (
+                    tools: 'M2_HOME',
+                    pom: 'pom.xml',
+                    goals: "mvn ${params.GOALS}",
+                    deployerId: 'MAVEN_DEPLOYER'
+                )
+            }
+        }
 
     }  
     post {
