@@ -13,6 +13,8 @@ jobs:
       steps: 
          - name: git clone
            uses: actions/checkout@v4
+         - name: list files
+           uses: ls -al
          - name: cache dependencies
            uses: actions/cache@v4
            with:
