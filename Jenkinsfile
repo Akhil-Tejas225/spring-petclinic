@@ -69,7 +69,7 @@ pipeline {
                 body: " ${BUILD_ID} is failure"
                 }
                 
-            }    
+}    
 }
 }
 
