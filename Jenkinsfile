@@ -48,7 +48,7 @@ pipeline {
                 }  
             }
         }
-        stage('Deploytojfrog'){
+        stage('Deploytojfrog') {
             steps {
                dir(spring-petclinic) {
                 sh 'jf rt mvn clean install'
