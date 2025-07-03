@@ -50,12 +50,14 @@ pipeline {
             }
         }
         stage('Deploytojfrog') {
+            environment {
+                   PATH = "/usr/local/bin:$PATH"
+              }
             steps {
                dir('spring-petclinic') {
                 sh '''
-               JFROG=/usr/local/bin
                echo "deploying to jfrog.."
-                ${JFROG}/jf rt mvn clean deploy
+               jf rt mvn clean deploy
                '''
               }
                 
