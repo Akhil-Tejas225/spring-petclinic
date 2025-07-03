@@ -13,13 +13,32 @@ jobs:
       steps: 
          - name: git clone
            uses: actions/checkout@v4
+         - name: cache dependencies
+           uses: actions/cache@v4
+           with:
+             path: ~/.m2/repository
+             key: maven-${{ hashFiles('**/pom.xml') }}
+          
+    job-2:
+      name: package
+      needs: Job-1
+      runs-on: ubuntu-latest
+      outputs:
+        output1: ${{ steps.md_file.outputs.md_name}}      
+      steps:
+         - name: cache dependencies
+           uses: actions/cache@v4
+           with:
+             path: ~/.m2/repository
+             key: maven-${{ hashFiles('**/pom.xml') }}             
          - name: package
-           run: mvn clean package
+           run: cd spring-petclinic && mvn clean package
          - name: find and copy build artifacts
            run: |
              mkdir -p artifacts && mkdir testreports
              find . -type f -name spring-petclinic*.jar -exec cp {} artifacts/ \;
              find . -type f -name TEST-*.xml -exec cp {} testreports/ \;
+<<<<<<< HEAD
              
          - name: uploading build atrifacts
            uses: actions/upload-artifact@v4
@@ -33,6 +52,41 @@ jobs:
            with:
               name: upload-Testresults
               path: testreports/
+=======
+         - name: get md file
+           run: find . -type f  -name "*.md" -exec echo "md_name={}" \; >> $GITHUB_OUTPUT 
+           id: md_file
+
+         - name: uploading build atrifacts
+           uses: actions/upload-artifact@v4
+           with: 
+              name: dist artifacts
+              path: |
+                 artifacts/
+                 testreports/
+    Job-3:
+        name: download artifacts
+        needs: job-2
+        runs-on: ubuntu-latest
+        steps:
+            - name: download-artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: dist artifacts
+                path: |
+                  artifacts/
+                  testreports/
+            - name: list files
+              run: ls
+            - name: get_output
+              run: echo "${{ needs.job-2.outputs.output1 }}"
+
+        #  - name: upload Test results
+        #    uses: actions/upload-artifact@v4
+        #    with:
+        #       name: upload-Testresults
+        #       path: testreports/
+>>>>>>> 31b8ae6d6aca5ff5acfea4947d26a9a3f29e9772
         
     # job-2:
     #   name: build
