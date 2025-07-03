@@ -9,6 +9,9 @@ pipeline {
     parameters {
           choice(name: 'GOALS', choices: ['clean package', 'package', 'build','test', 'deploy'], description: 'Maven Goals')
     }
+    environment {
+          PATH = "/usr/local/bin:$PATH"
+    }
     stages {
         stage('git') {
              steps {
@@ -50,9 +53,6 @@ pipeline {
             }
         }
         stage('Deploytojfrog') {
-            environment {
-                   PATH = "/usr/local/bin:$PATH"
-              }
             steps {
                dir('spring-petclinic') {
                 sh '''
