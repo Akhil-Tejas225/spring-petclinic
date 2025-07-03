@@ -54,7 +54,7 @@ pipeline {
                dir('spring-petclinic') {
                 script{
                     def jfrogpath = tool 'jfcli'
-                    sh "${jfrogpath}/rt mvn clean deploy"
+                    sh "${jfrogpath}/jf rt mvn clean deploy"
                 }
             }
         }
