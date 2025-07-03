@@ -48,32 +48,12 @@ pipeline {
                 }  
             }
         }
-        stage('artifcatory configuration'){
+        stage('Deploytojfrog'){
             steps {
-                rtServer(
-                    id: 'ARTIFACTORY_SERVER',
-                    serverId: 'JFROG',
-                    credentialsId: 'jfrog',
-                )
-                rtMavenDeployer(
-                    id: 'MAVEN_DEPLOYER',
-                    serverId: 'ARTIFACTORY_SERVER',
-                    releaseRepo: 'at227-libs-release',
-                    snapshotRepo: 'at227-libs-snapshot'
-
-                )
+               dir(spring-petclinic) {
+                sh 'jf rt mvn clean install'
             }
         }
-        stage('Maven_build'){
-            steps{
-                rtMavenRun (
-                    pom: 'pom.xml',
-                    goals: "mvn clean deploy",
-                    deployerId: 'MAVEN_DEPLOYER'
-                )
-            }
-        }
-
     }  
     post {
        success {
