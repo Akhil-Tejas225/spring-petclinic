@@ -30,9 +30,11 @@ jobs:
            uses: actions/cache@v4
            with:
              path: ~/.m2/repository
-             key: maven-${{ hashFiles('**/pom.xml') }}             
+             key: maven-${{ hashFiles('**/pom.xml') }}
+         - name: list files
+           run: ls -al         
          - name: package
-           run: mvn clean package
+           run: cd spring-petclinic && mvn clean package
          - name: find and copy build artifacts
            run: |
              mkdir -p artifacts && mkdir testreports
