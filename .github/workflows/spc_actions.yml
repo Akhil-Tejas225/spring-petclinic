@@ -38,21 +38,6 @@ jobs:
              mkdir -p artifacts && mkdir testreports
              find . -type f -name spring-petclinic*.jar -exec cp {} artifacts/ \;
              find . -type f -name TEST-*.xml -exec cp {} testreports/ \;
-<<<<<<< HEAD
-             
-         - name: uploading build atrifacts
-           uses: actions/upload-artifact@v4
-           with: 
-              name: upload artifacts
-              path: |
-                 artifacts/
-                 testreports/
-         - name: upload Test results
-           uses: actions/upload-artifact@v4
-           with:
-              name: upload-Testresults
-              path: testreports/
-=======
          - name: get md file
            run: find . -type f  -name "*.md" -exec echo "md_name={}" \; >> $GITHUB_OUTPUT 
            id: md_file
@@ -86,7 +71,6 @@ jobs:
         #    with:
         #       name: upload-Testresults
         #       path: testreports/
->>>>>>> 31b8ae6d6aca5ff5acfea4947d26a9a3f29e9772
         
     # job-2:
     #   name: build
