@@ -67,7 +67,6 @@ pipeline {
         stage('Maven_build'){
             steps{
                 rtMavenRun (
-                    tool: 'M2_HOME',
                     pom: 'pom.xml',
                     goals: "mvn clean deploy",
                     deployerId: 'MAVEN_DEPLOYER'
