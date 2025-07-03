@@ -55,7 +55,7 @@ pipeline {
                 sh '''
                JFROG=/usr/local/bin
                echo "deploying to jfrog.."
-                ${JFROG}jf rt mvn clean deploy
+                ${JFROG}/jf rt mvn clean deploy
                '''
               }
                 
