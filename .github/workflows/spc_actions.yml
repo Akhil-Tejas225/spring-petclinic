@@ -36,7 +36,7 @@ jobs:
          - name: list files
            run: ls -al         
          - name: package
-           run: cd ~ && mvn clean package
+           run: mvn clean package
          - name: find and copy build artifacts
            run: |
              mkdir -p artifacts && mkdir testreports
