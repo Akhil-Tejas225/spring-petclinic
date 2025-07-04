@@ -68,7 +68,7 @@ pipeline {
             }
 
             steps {
-               dir {
+            
                 sh '''
                ls -al
                export JFROG_CLI_HOME="$WORKSPACE/.jfrog"
@@ -79,7 +79,7 @@ pipeline {
                jf mvn-config --server-id-resolve='trialm9czxi' --repo-resolve-releases='at227-libs-release' --repo-resolve-snapshots='at227-libs-deploy' --repo-deploy-releases='at227-libs-release' --repo-deploy-snapshots='at227-libs-snapshot' 
                jf mvn clean deploy
                '''
-              }
+            
                 
             }
         }
