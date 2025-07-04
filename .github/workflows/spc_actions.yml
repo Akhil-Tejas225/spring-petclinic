@@ -13,11 +13,15 @@ jobs:
       steps: 
          - name: git clone
            uses: actions/checkout@v4
+         - name: list files
+           run: ls -al
          - name: cache dependencies
            uses: actions/cache@v4
            with:
              path: ~/.m2/repository
              key: maven-${{ hashFiles('**/pom.xml') }}
+         - name: package
+           run: mvn clean package
           
     job-2:
       name: package
@@ -30,9 +34,10 @@ jobs:
            uses: actions/cache@v4
            with:
              path: ~/.m2/repository
-             key: maven-${{ hashFiles('**/pom.xml') }}             
-         - name: package
-           run: cd spring-petclinic && mvn clean package
+             key: maven-${{ hashFiles('**/pom.xml') }}
+         - name: list files
+           run: ls -al         
+
          - name: find and copy build artifacts
            run: |
              mkdir -p artifacts && mkdir testreports
