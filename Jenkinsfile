@@ -67,7 +67,7 @@ pipeline {
                dir('spring-petclinic') {
                 sh '''
                echo "deploying to jfrog.."
-               jf 'rt mvn clean deploy'
+               jf rt mvn clean deploy
                '''
               }
                 
