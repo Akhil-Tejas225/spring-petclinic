@@ -67,6 +67,7 @@ pipeline {
                dir('spring-petclinic') {
                 sh '''
                echo "deploying to jfrog.."
+               jf mvn-config --server-id-resolve='trialm9czxi' --repo-deploy-release='at227-libs-release' --repo-deploy-snapshot='at227-libs-snapshot'
                jf mvn clean deploy
                '''
               }
