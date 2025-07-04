@@ -75,10 +75,10 @@ pipeline {
                export JFROG_CLI_CACHE_DIR="$WORKSPACE/.jfrog/cache"
                export JFROG_CLI_TEMP_DIR="$WORKSPACE/.jfrog/temp"
                export MAVEN_USER_HOME="$WORKSPACE/.m2"
-               mkdir -p "$JFROG_CLI_HOME" "$JFROG_CLI_CACHE_DIR" "$JFROG_CLI_TEMP_DIR"
+               mkdir -p "$JFROG_CLI_HOME" "$JFROG_CLI_CACHE_DIR" "$JFROG_CLI_TEMP_DIR" "$MAVEN_USER_HOME"
                echo "deploying to jfrog.."
                jf mvn-config --server-id-resolve='trialm9czxi' --repo-resolve-releases='at227-libs-release' --repo-resolve-snapshots='at227-libs-deploy' --repo-deploy-releases='at227-libs-release' --repo-deploy-snapshots='at227-libs-snapshot' 
-               jf mvn clean deploy
+               jf mvn clean deploy --m2-home=usr/share/maven
                '''
             
                 
