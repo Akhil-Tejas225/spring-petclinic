@@ -70,6 +70,10 @@ pipeline {
             steps {
                dir('spring-petclinic') {
                 sh '''
+               export JFROG_CLI_HOME="$WORKSPACE/.jfrog"
+               export JFROG_CLI_CACHE_DIR="$WORKSPACE/.jfrog/cache"
+               export JFROG_CLI_TEMP_DIR="$WORKSPACE/.jfrog/temp"
+               mkdir -p "$JFROG_CLI_HOME" "$JFROG_CLI_CACHE_DIR" "$JFROG_CLI_TEMP_DIR"
                echo "deploying to jfrog.."
                jf mvn-config --server-id-resolve='trialm9czxi' --repo-resolve-releases='at227-libs-release' --repo-resolve-snapshots='at227-libs-deploy' --repo-deploy-releases='at227-libs-release' --repo-deploy-snapshots='at227-libs-snapshot' 
                jf mvn clean deploy
