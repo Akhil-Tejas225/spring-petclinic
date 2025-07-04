@@ -70,6 +70,7 @@ pipeline {
             steps {
                dir('spring-petclinic') {
                 sh '''
+               ls -al
                export JFROG_CLI_HOME="$WORKSPACE/.jfrog"
                export JFROG_CLI_CACHE_DIR="$WORKSPACE/.jfrog/cache"
                export JFROG_CLI_TEMP_DIR="$WORKSPACE/.jfrog/temp"
