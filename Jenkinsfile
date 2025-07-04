@@ -60,6 +60,7 @@ pipeline {
             }
             tools{
                 jfrog 'jfcli'
+                maven 'M2_HOME'
             }
 
             steps {
