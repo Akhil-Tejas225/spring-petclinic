@@ -29,7 +29,6 @@ pipeline {
             }
             tools {
                 maven 'M2_HOME'
-                jfrog 'jfcli'
 
             }
             agent {
@@ -54,6 +53,14 @@ pipeline {
             }
         }
         stage('Deploytojfrog') {
+            agent{
+                node{
+                    label 'java'
+                }
+            }
+            tools{
+                jfrog 'jfcli'
+            }
 
             steps {
                dir('spring-petclinic') {
