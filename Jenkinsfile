@@ -57,6 +57,10 @@ pipeline {
                 node{
                     label 'java'
                 }
+            environment {
+                JFROG_CLI_HOME = "${WORKSPACE}/.jfrog"
+                 PATH = "/usr/local/bin:$PATH"
+                 }
             }
             tools{
                 jfrog 'jfcli'
