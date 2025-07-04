@@ -14,7 +14,7 @@ jobs:
          - name: git clone
            uses: actions/checkout@v4
          - name: list files
-           uses: ls -al
+           run: ls -al
          - name: cache dependencies
            uses: actions/cache@v4
            with:
