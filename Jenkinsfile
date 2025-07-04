@@ -28,7 +28,8 @@ pipeline {
                 }
             }
             tools {
-                maven 'M2_HOME'
+                maven 'M2_HOME',
+                jfrog 'jfcli'
 
             }
             agent {
@@ -57,7 +58,7 @@ pipeline {
                dir('spring-petclinic') {
                 sh '''
                echo "deploying to jfrog.."
-               jf rt mvn clean deploy
+               jf 'rt mvn clean deploy'
                '''
               }
                 
