@@ -20,6 +20,8 @@ jobs:
            with:
              path: ~/.m2/repository
              key: maven-${{ hashFiles('**/pom.xml') }}
+         - name: package
+           run: mvn clean package
           
     job-2:
       name: package
@@ -35,8 +37,7 @@ jobs:
              key: maven-${{ hashFiles('**/pom.xml') }}
          - name: list files
            run: ls -al         
-         - name: package
-           run: mvn clean package
+
          - name: find and copy build artifacts
            run: |
              mkdir -p artifacts && mkdir testreports
